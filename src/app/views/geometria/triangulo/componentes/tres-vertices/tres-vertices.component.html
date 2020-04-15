@@ -1,0 +1,398 @@
+<!-- <script src="arial.js"></script> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css">
+<form [formGroup]="formModel">
+  <div class="tres-vertices">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-xl-7 tres-vertices__triangulo">
+          <div class="col-sm-12 col-md-12 tres-vertices__triangulo__entrada">
+            <h6>
+              <div class="row">
+                <div class="col-sm-12 col-md-4">
+                  <span>Vértice A</span>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon2">x</span>
+                    <input type="number" name="cordAX" formControlName="cordAX" class="form-control tres-vertices__entrada__input"
+                      aria-describedby="sizing-addon2">
+                    <div class="tres-vertices__entrada__validacao">
+                      <span *ngIf="formModel.get('cordAX').hasError('required') && formModel.get('cordAX').touched">Campo
+                        inválido!</span>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon2">y</span>
+                    <input type="number" name="cordAY" formControlName="cordAY" class="form-control tres-vertices__entrada__input"
+                      aria-describedby="sizing-addon2">
+                    <div class="tres-vertices__entrada__validacao">
+                      <span *ngIf="formModel.get('cordAY').hasError('required') && formModel.get('cordAY').touched">Campo
+                        inválido!</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                  <span>Vértice B</span>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon2">x</span>
+                    <input type="number" name="cordBX" formControlName="cordBX" class="form-control tres-vertices__entrada__input"
+                      aria-describedby="sizing-addon2">
+                    <div class="tres-vertices__entrada__validacao">
+                      <span *ngIf="formModel.get('cordBX').hasError('required') && formModel.get('cordBX').touched">Campo
+                        inválido!</span>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon2">y</span>
+                    <input type="number" name="cordBY" formControlName="cordBY" class="form-control tres-vertices__entrada__input"
+                      aria-describedby="sizing-addon2">
+                    <div class="tres-vertices__entrada__validacao">
+                      <span *ngIf="formModel.get('cordBY').hasError('required') && formModel.get('cordBY').touched">Campo
+                        inválido!</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                  <span>Vértice C</span>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon2">x</span>
+                    <input type="number" name="cordCX" formControlName="cordCX" class="form-control tres-vertices__entrada__input"
+                      aria-describedby="sizing-addon2">
+                    <div class="tres-vertices__entrada__validacao">
+                      <span *ngIf="formModel.get('cordCX').hasError('required') && formModel.get('cordCX').touched">Campo
+                        inválido!</span>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon2">y</span>
+                    <input type="number" name="cordCY" formControlName="cordCY" class="form-control tres-vertices__entrada__input"
+                      aria-describedby="sizing-addon2">
+                    <div class="tres-vertices__entrada__validacao">
+                      <span *ngIf="formModel.get('cordCY').hasError('required') && formModel.get('cordCY').touched">Campo
+                        inválido!</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </h6>
+          </div>
+          <div #container class="col-sm-12 col-md-12 tres-vertices__triangulo__desenho">
+            <!-- resolução -->
+          </div>
+        </div>
+
+        <div class="col-lg-12 col-xl-5 tres-vertices__resolucao">
+          <div class="col-sm-12 col-md-12">
+            <h4>Propriedades</h4>
+          </div>
+
+          <div class="col-sm-12 col-md-12 tres-vertices__resolucao__accordion">
+            <div class="accordion" id="accordionPropriedades">
+              <div class="card">
+                <div class="card-header tres-vertices__explicacao__opcao__botao" id="headingOne" data-toggle="collapse"
+                  data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" (click)="onSetArea()">
+                  Área
+                  = {{areaTemplate}}
+                  <div class="tres-vertices__explicacao__opcao__botao__icon">
+                    <i class="fa fa-arrow-circle-down tres-vertices__explicacao__opcao__botao__icon__fa__down"
+                      aria-hidden="true"></i>
+                  </div>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionPropriedades">
+                  <div class="card-body">
+                    <h5>
+                      <div class="row">
+                        <div class="col-sm-12 col-md-12 tres-vertices__resultado">
+                          <span class="tres-vertices__resultado__explicacao">
+                            Para mudar a base, basta escolher um lado e clicar sobre ele.
+                          </span>
+                          <hr>
+                        </div>
+                        <div class="col-sm-12 tres-vertices__resultado">
+                          <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                              <ng-katex class="tres-vertices__resultado__formula" [equation]="equacaoArea"></ng-katex>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                              <span class="tres-vertices__resultado__explicacao">Fórmula para calcular a área.
+                              </span>
+                              <span>
+                                <div *ngIf="formModel.get('propriedadeDesenho').value === 'BaseA'">
+                                  h = altura | a = base
+                                </div>
+                                <div *ngIf="formModel.get('propriedadeDesenho').value === 'BaseB'">
+                                  h = altura | b = base
+                                </div>
+                                <div *ngIf="formModel.get('propriedadeDesenho').value === 'BaseC'">
+                                  h = altura | c = base
+                                </div>
+                              </span>
+                            </div>
+                          </div>
+                          <hr>
+                        </div>
+                        <div class="col-sm-12 tres-vertices__resultado">
+                          <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                              <ng-katex class="tres-vertices__resultado__formula" [equation]="equacaoArea2"></ng-katex>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                              <span class="tres-vertices__resultado__explicacao">Substituir os valores na fórmula.
+                              </span>
+                            </div>
+                          </div>
+                          <hr>
+                        </div>
+                        <div class="col-sm-12 tres-vertices__resultado">
+                          <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                              <ng-katex class="tres-vertices__resultado__formula" [equation]="equacaoArea3"></ng-katex>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                              <span class="tres-vertices__resultado__explicacao"> Resultado.</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header tres-vertices__explicacao__opcao__botao" id="headingTwo" data-toggle="collapse"
+                  data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" (click)="onSetBaseAltura()">
+                  Base e Altura
+                  <div class="tres-vertices__explicacao__opcao__botao__icon">
+                    <i class=" fa fa-arrow-circle-down tres-vertices__explicacao__opcao__botao__icon__fa__down"
+                      aria-hidden="true"></i>
+                  </div>
+                </div>
+
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionPropriedades">
+                  <div class="card-body">
+                    <h5>
+                      <div class="row">
+                        <div class="col-sm-12 col-md-12 tres-vertices__resultado">
+                          <span class="tres-vertices__resultado__explicacao">
+                            Para mudar a base, basta escolher um lado e clicar sobre ele.
+                          </span>
+                          <hr>
+                        </div>
+                        <div class="col-sm-12 col-md-12 tres-vertices__resultado">
+                          <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                              Base = {{ formModel.get('base').value }}
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                              Altura = {{ formModel.get('altura').value }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header tres-vertices__explicacao__opcao__botao" id="headingThree" data-toggle="collapse"
+                  data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree" (click)="onSetMedidaLados()">
+                  Medida dos lados
+                  <div class="tres-vertices__explicacao__opcao__botao__icon">
+                    <i class=" fa fa-arrow-circle-down tres-vertices__explicacao__opcao__botao__icon__fa__down"
+                      aria-hidden="true"></i>
+                  </div>
+                </div>
+
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionPropriedades">
+                  <div class="card-body">
+                    <h5>
+                      <div class="row">
+                        <div class="col-sm-12 col-md-12 tres-vertices__resultado">
+                          <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                              <span class="tres-vertices__resultado__explicacao">Para saber o valor da medida de algum
+                                lado,
+                                basta escolher um lado e clicar sobre ele.
+                              </span>
+                              <hr>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-12 col-md-12">
+                              Lado {{ formModel.get('ladoLetra').value }} = {{ formModel.get('ladoValor').value }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header tres-vertices__explicacao__opcao__botao" id="headingFour" data-toggle="collapse"
+                  data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour" (click)="onSetPerimetro()">
+                  Perímetro = {{perimetroTemplate}}
+                  <div class="tres-vertices__explicacao__opcao__botao__icon">
+                    <i class=" fa fa-arrow-circle-down tres-vertices__explicacao__opcao__botao__icon__fa__down"
+                      aria-hidden="true"></i>
+                  </div>
+                </div>
+
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionPropriedades">
+                  <div class="card-body">
+                    <h5>
+                      <div class="row">
+                        <div class="col-sm-12 tres-vertices__resultado">
+                          <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                              <ng-katex class="tres-vertices__resultado__formula" [equation]="equacaoPerimetro"></ng-katex>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                              <span class="tres-vertices__resultado__explicacao">Fórmula para calcular o perímetro.
+                                Basta
+                                somar a medida dos lados!
+                              </span>
+                              <hr>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-12 tres-vertices__resultado">
+                          <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                              <ng-katex class="tres-vertices__resultado__formula" [equation]="equacaoPerimetro2"></ng-katex>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                              <span class="tres-vertices__resultado__explicacao">Substituir os valores na fórmula.
+                              </span>
+                              <hr>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-12 tres-vertices__resultado">
+                          <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                              <ng-katex class="tres-vertices__resultado__formula" [equation]="equacaoPerimetro3"></ng-katex>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                              <span class="tres-vertices__resultado__explicacao"> Resultado.</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header tres-vertices__explicacao__opcao__botao" id="headingFive" data-toggle="collapse"
+                  data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive" (click)="onSetTipoLados()">
+                  Tipo quanto aos Lados = {{formModel.get('tipoLados').value}}
+                  <div class="tres-vertices__explicacao__opcao__botao__icon">
+                    <i class=" fa fa-arrow-circle-down tres-vertices__explicacao__opcao__botao__icon__fa__down"
+                      aria-hidden="true"></i>
+                  </div>
+                </div>
+
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionPropriedades">
+                  <div class="card-body">
+                    <h5>
+                      <div class="row">
+                        <div class="col-sm-12 col-md-12 tres-vertices__resultado">
+                          <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                              <span class="tres-vertices__resultado__explicacao">
+                                {{ formModel.get('tipoLados').value }}
+                              </span>
+                              <hr>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                              <span class="tres-vertices__resultado__explicacao" *ngIf="formModel.get('tipoLados').value === 'Equilátero'">
+                                O triângulo é equilátero porque os três lados possuem a mesma medida.
+                              </span>
+                              <span class="tres-vertices__resultado__explicacao" *ngIf="formModel.get('tipoLados').value === 'Escaleno'">
+                                O triângulo é escaleno porque os três lados possuem medidas diferentes.
+                              </span>
+                              <span class="tres-vertices__resultado__explicacao" *ngIf="formModel.get('tipoLados').value === 'Isósceles'">
+                                {{ formModel.get('tipoLadosIsosceles').value }}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header tres-vertices__explicacao__opcao__botao" id="headingSix" data-toggle="collapse"
+                  data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix" (click)="onSetTipoAngulos()">
+                  Tipo quanto as Ângulos = {{formModel.get('tipoAngulos').value}}
+                  <div class="tres-vertices__explicacao__opcao__botao__icon">
+                    <i class=" fa fa-arrow-circle-down tres-vertices__explicacao__opcao__botao__icon__fa__down"
+                      aria-hidden="true"></i>
+                  </div>
+                </div>
+
+                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionPropriedades">
+                  <div class="card-body">
+                    <h5>
+                      <div class="row">
+                        <div class="col-sm-12 col-md-12 tres-vertices__resultado">
+                          <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                              <span class="tres-vertices__resultado__explicacao">
+                                {{ formModel.get('tipoAngulos').value }}
+                              </span>
+                              <hr>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                              <span class="tres-vertices__resultado__explicacao" *ngIf="formModel.get('tipoAngulos').value === 'Retângulo'">
+                                O triângulo é retângulo porque possui um ângulo reto.
+                                <br> <br>
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                O ângulo se torna reto quando seus lados são semi–retas opostas e a medida for de dois
+                                retos de 180°.
+                              </span>
+                              <span class="tres-vertices__resultado__explicacao" *ngIf="formModel.get('tipoAngulos').value === 'Obtusângulo'">
+                                O triângulo é obtusângulo porque possui um ângulo obtuso.
+                                <br> <br>
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                O ângulo se torna obtuso quando sua medida é maior que a medida de um ângulo reto de
+                                90°.
+                              </span>
+                              <span class="tres-vertices__resultado__explicacao" *ngIf="formModel.get('tipoAngulos').value === 'Acutângulo'">
+                                O triângulo é acutângulo porque possui os três ângulos internos agudos.
+                                <br> <br>
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                O ângulo se torna agudo quando sua medida é menor que a medida de um ângulo reto de
+                                90°.
+                              </span>
+                              <hr>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                              <h4>Medida dos ângulos</h4>
+                              <div class="col-sm-12 col-md-12">
+                                Ângulo A = {{ anguloVerticeA }} &deg;
+                              </div>
+                              <div class="col-sm-12 col-md-12">
+                                Ângulo B = {{ anguloVerticeB }} &deg;
+                              </div>
+                              <div class="col-sm-12 col-md-12">
+                                Ângulo C = {{ anguloVerticeC }} &deg;
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</form>

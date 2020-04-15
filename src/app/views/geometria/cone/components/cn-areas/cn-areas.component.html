@@ -1,0 +1,35 @@
+<section class="info">
+
+  <div class="row mt-2">
+    <!-- Botões de navegação -->
+    <div class="btn-container mt-2 row mx-auto">
+      <div class=" col-12 text-center">
+        <h3 class="text-center">Áreas</h3>
+      </div>
+      <h5 class="mt-2 col-12 text-center">Escolha abaixo a área referente ao cone que deseja calcular</h5>
+      <div class="row col-12">
+        <geo-btn class="mx-auto" *ngFor="let button of buttons; let i = index" [name]="button.title"
+          [route]="button.route"></geo-btn>
+      </div>
+    </div>
+
+    <!-- Breve explicação -->
+    <div class="content-container col-12 row px-0 align-items-center justify-content-center">
+      <div class="row col-12 mt-5">
+        <div class="col-lg-4 col-md-6 col-12">
+          <h5 class="text-center ">Área da base</h5>
+          <img class="img-fluid" src="assets/images/geometria/cone/cn-areas/areas-area-base-cone.svg">
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <h5 class="text-center mb-0">Área lateral</h5>
+          <img class="img-fluid" src="assets/images/geometria/cone/cn-areas/areas-area-lateral-cone.svg">
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <h5 class="text-center mb-0">Área total</h5>
+          <img class="img-fluid" src="assets/images/geometria/cone/cn-areas/areas-area-total-cone.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

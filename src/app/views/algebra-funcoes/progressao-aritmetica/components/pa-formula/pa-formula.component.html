@@ -1,0 +1,56 @@
+<!-- region fomrulario -->
+<section class="ifmath-form__contener__body">
+    <!-- Form -->
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" #demoForm="ngForm">
+        <div class="row ifmath-conteudo__titulo">
+            <span class="ifmath-conteudo__txt-titulo">
+                <h3>Encontrar a Razão (r) de uma Progressão Aritmética</h3>
+            </span>
+        </div>
+        <br>
+        <div class="row">
+            <!-- Title -->
+            <div class="col-sm-12 col-md-4 ifmath-form__title ifmath-conteudo__borda">
+                <img class="ifmath-form_img-formula ifmath-form_img-formula--blackgrey"
+                    src="assets/images/formulas/formula_PA_razao.png"><br />
+                <br />
+            </div>
+
+            <div class="col-sm-12 col-md-8">
+                <!-- Fields -->
+                <div class="col-md-12 input-group">
+                    <span class="input-group-addon input-group-addon--blackgrey" id="sizing-addon2">a1</span>
+                    <input type="text" name="a1" formControlName="a1" class="form-control"
+                        aria-describedby="sizing-addon2">
+                </div>
+                <div class="col-md-12 input-group">
+                    <span class="input-group-addon input-group-addon--blackgrey" id="sizing-addon2">an</span>
+                    <input type="text" name="an" formControlName="an" class="form-control"
+                        aria-describedby="sizing-addon2">
+                </div>
+                <div class="col-md-12 input-group">
+                    <span class="input-group-addon input-group-addon--blackgrey" id="sizing-addon2">r</span>
+                    <input type="text" name="n" formControlName="n" class="form-control"
+                        aria-describedby="sizing-addon2">
+                </div>
+
+                <!-- buttons -->
+                <div class="col-sm-12 col-md-12 ifmath-form__button__group">
+                    <button type="submit" class="btn btn-success btn-success--blackgrey btn-success--semMargin"
+                        value="Calcular">Calcular</button>
+                    <button type="reset" class="btn btn-success btn-success--blackgrey btn-success--semMargin"
+                        value="Limpar">Limpar</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+    <!-- endregion -->
+    <div class="row">
+        <!-- region Resultados -->
+        <div class="col-sm-12 col-md-12">
+            <ifmath-ng-results [loading]="loading" [resultados]="resultados"></ifmath-ng-results>
+        </div>
+        <!-- endregion -->
+    </div>
+</section>

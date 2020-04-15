@@ -1,0 +1,26 @@
+<!-- Title -->
+<div class="col-sm-12 col-md-12 mt-2">
+  <h4>Propriedades</h4>
+</div>
+<!-- Accordion -->
+<div class="col-12 px-3 pt-3 content-accordion">
+  <div class="accordion border-0" id="accordionProperties">
+
+    <!-- Card -->
+    <div class="card" *ngFor="let card of cards">
+      <!-- Title card -->
+      <div class="card-header bg-white" id="headingOne">
+        <p class=" p-0 m-0 border-0 nounderline" type="text" data-toggle="collapse" [attr.data-target]="'#' + card.id"
+          aria-expanded="true" aria-controls="headingOne">
+          {{ card.title }}
+        </p>
+      </div>
+      <!-- Content card -->
+      <div [attr.id]="card.id" class="collapse" aria-labelledby="headingOne" data-parent="#accordionProperties"
+        [ngClass]="verifyPosition == card.id ? 'collapse show' : ''">
+        <div class="card-body" [innerHTML]="card.content">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

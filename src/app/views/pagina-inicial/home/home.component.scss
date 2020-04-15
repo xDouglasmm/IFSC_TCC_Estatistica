@@ -1,0 +1,96 @@
+$margin: 90px;
+$padding: 15px;
+
+$blackgrey: rgb(143, 146, 144);
+$blue: #4683b4;
+$wisteria: #8b67af;
+$orange:#f54e07;
+
+#home-container {
+ // margin-top: 5px;
+  margin-bottom: $margin;
+  // padding-left: $padding;
+  padding-right: $padding;
+}
+
+.if-icon {
+  height: 14px;
+  vertical-align: top;
+  line-height: 5px;
+}
+
+.home-subject {
+  font-size: 14px;
+}
+
+#number-operations {
+  a:hover {
+    text-decoration: none !important;
+  }
+  a > h4,
+  .mat-icon {
+    color: $wisteria;
+  }
+}
+
+#algebra-functions {
+  a:hover {
+    text-decoration: none !important;
+  }
+
+  a > h4,
+  .mat-icon {
+    color: $blackgrey;
+  }
+}
+
+#geometry {
+  a:hover {
+    text-decoration: none !important;
+  }
+
+  a > h4,
+  .mat-icon {
+    color: $blue;
+  }
+}
+
+#estatistica {
+  a:hover {
+    text-decoration: none !important;
+  }
+
+  a > h4,
+  .mat-icon {
+    color: $orange;
+  }
+}
+
+.border-right-dashed {
+  border-right: 1px dashed #a1a1a1;
+}
+
+@media screen and (max-width: 992px) {
+  .border-right-dashed {
+    border-right: none;
+  }
+
+  #algebra-functions,
+  #geometry {
+    margin-top: 50px;
+  }
+}
+
+.img-responsive {
+  display: block;
+  max-width: 90%;
+  max-height: 30%;
+}
+
+#carouselExampleFade{
+  margin-bottom: 30px;
+}
+
+.carousel-item{
+  width: 100%;
+}

@@ -1,0 +1,261 @@
+<section class="ifmath-description">
+
+  <h3>Equação</h3>
+  <p class="ifmath-description__text ifmath-description__text--justify">
+    É toda sentença matemática que exprime uma relação de igualdade entre duas expressões algébricas e uma ou mais
+    incógnitas <strong>(variáveis ou valor desconhecido)</strong> que são designadas por letras. Dessa forma, toda
+    equação possui:
+    Sinal de igualdade;
+    Primeiro membro <strong>(antes do sinal de igualdade)</strong> e segundo membro <strong>(depois do sinal de
+      igualdade)</strong>.
+  </p>
+
+  <h4>Equação do 1º Grau</h4>
+  <p class="ifmath-description__text ifmath-description__text--justify">
+    É toda equação com uma incógnita <strong>(geralmente “x”)</strong> que pode ser escrita na forma <strong>ax + b = 0</strong>,
+    onde <strong>a</strong> e <strong>b</strong> são números reais, e <strong>a ≠ 0</strong>.
+  </p>
+
+  <h5>Como resolver uma equação do primeiro grau?</h5>
+  <p class="ifmath-description__text ifmath-description__text--justify">
+    O propósito de solucionar uma equação do 1º grau é descobrir o valor da incógnita, ou seja, encontrar o valor da
+    incógnita
+    que torna a igualdade verdadeira. Este valor encontrado chama-se <strong>raiz</strong>. Para esse fim, deve-se
+    isolar os
+    elementos desconhecidos em um dos lados do sinal de igual e os valores constantes do outro lado. Todavia, é
+    importante
+    observar que a mudança de posição desses elementos deve ser feita de forma que a igualdade continue sendo
+    verdadeira.
+    Quando um termo da equação mudar de lado do sinal de igual, devemos inverter a operação. Desta forma, se tiver
+    multiplicando,
+    passará dividindo, se tiver somando, passará subtraindo e assim por diante.
+  </p>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <h5>Exemplo 1</h5>
+      <div class="row">
+        <div class="col-sm-12">
+          <ng-katex [equation]="getArrayItem(equationOne,0)" [options]="options"></ng-katex>
+        </div>
+        <div class="col-sm-12">
+          <button class="ifmath-description__button__solution ifmath-description__button__solution--blackgrey" (click)="isVisibleEquationOne = !isVisibleEquationOne">Solução
+            da Equação</button>
+        </div>
+        <div *ngIf="isVisibleEquationOne" class="col-sm-12">
+          <h3>Solução:</h3>
+
+          <!-- Passo 1 -->
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class="ifmath-description__step__title">Passo 1:</h3>
+            </div>
+            <div class="col-sm-12">
+              <ng-katex [equation]="getArrayItem(equationOne,1)" [options]="options"></ng-katex>
+            </div>
+            <div class="col-sm-12">
+              <p class="ifmath-description__text ifmath-description__text--justify">Os termos semelhantes foram
+                isolados. As incógnitas foram movidas para o 1º membro (lado esquerdo da igualdade) e as constantes
+                para o 2º membro (lado direito da igualdade).
+                Para manter o equilíbrio da equação é necessário aplicar a operação inversa, neste caso trocamos o
+                sinal dos termos movidos.
+              </p>
+            </div>
+          </div>
+
+          <!-- Passo 2 -->
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class="ifmath-description__step__title">Passo 2:</h3>
+            </div>
+            <div class="col-sm-12">
+              <ng-katex [equation]="getArrayItem(equationOne,2)" [options]="options"></ng-katex>
+            </div>
+            <div class="col-sm-12">
+              <p class="ifmath-description__text ifmath-description__text--justify"> Somamos os termos semelhantes.
+              </p>
+            </div>
+          </div>
+
+          <!-- Passo 3 -->
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class="ifmath-description__step__title">Passo 3:</h3>
+            </div>
+            <div class="col-sm-12">
+              <ng-katex [equation]="getArrayItem(equationOne,3)" [options]="options"></ng-katex>
+            </div>
+            <div class="col-sm-12">
+              <p class="ifmath-description__text ifmath-description__text--justify">
+                Como estamos procurando a incógnita <strong>x</strong>, temos que realizar a operação inversa com o
+                coeficiente
+                <strong>2</strong> que neste caso esta multiplicando e passará dividindo a constante <strong>10</strong>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Passo 4 -->
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class="ifmath-description__step__title">Passo 4:</h3>
+            </div>
+            <div class="col-sm-12">
+              <ng-katex [equation]="getArrayItem(equationOne,4)" [options]="options"></ng-katex>
+            </div>
+            <div class="col-sm-12">
+              <p class="ifmath-description__text ifmath-description__text--justify"> Simplificamos o resultado pois é
+                uma divisão exata.
+              </p>
+            </div>
+          </div>
+
+          <h5>Gráfico</h5>
+          <div class="row">
+            <div class="col-sm-12">
+              <img class="mx-auto d-block" src="assets/images/examples/egp_example_1.jpg"><br />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <h5>Exemplo 2</h5>
+      <div class="row">
+        <div class="col-sm-12">
+          <ng-katex [equation]="getArrayItem(equationTwo,0)" [options]="options"></ng-katex>
+        </div>
+        <div class="col-sm-12">
+          <button class="ifmath-description__button__solution ifmath-description__button__solution--blackgrey" (click)="isVisibleEquationTwo = !isVisibleEquationTwo">Solução
+            da Equação</button>
+        </div>
+        <div *ngIf="isVisibleEquationTwo" class="col-sm-12">
+          <h3>Solução:</h3>
+
+          <!-- Passo 1 -->
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class="ifmath-description__step__title">Passo 1:</h3>
+            </div>
+            <div class="col-sm-12">
+              <ng-katex [equation]="getArrayItem(equationTwo,1)" [options]="options"></ng-katex>
+            </div>
+            <div class="col-sm-12">
+              <p class="ifmath-description__text ifmath-description__text--justify">
+                Utilizando a propriedade distributiva, o elemento externo multiplicou cada elemento da operação
+                interna.
+              </p>
+            </div>
+          </div>
+
+          <!-- Passo 2 -->
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class="ifmath-description__step__title">Passo 2:</h3>
+            </div>
+            <div class="col-sm-12">
+              <ng-katex [equation]="getArrayItem(equationTwo,2)" [options]="options"></ng-katex>
+            </div>
+            <div class="col-sm-12">
+              <p class="ifmath-description__text ifmath-description__text--justify">Os termos semelhantes foram
+                isolados. As variáveis foram movidas para o 1º membro (lado esquerdo da igualdade) e as constantes
+                para o 2º membro (lado direito da igualdade). Para manter o equilíbrio da equação é necessário aplicar
+                a
+                operação inversa, neste caso trocamos o sinal dos termos movidos.
+              </p>
+            </div>
+          </div>
+
+          <!-- Passo 3 -->
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class="ifmath-description__step__title">Passo 3:</h3>
+            </div>
+            <div class="col-sm-12">
+              <ng-katex [equation]="getArrayItem(equationTwo,3)" [options]="options"></ng-katex>
+            </div>
+            <div class="col-sm-12">
+              <p class="ifmath-description__text ifmath-description__text--justify">
+                Somamos os termos semelhantes.
+              </p>
+            </div>
+          </div>
+
+          <!-- Passo 4 -->
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class="ifmath-description__step__title">Passo 4:</h3>
+            </div>
+            <div class="col-sm-12">
+              <ng-katex [equation]="getArrayItem(equationTwo,4)" [options]="options"></ng-katex>
+            </div>
+            <div class="col-sm-12">
+              <p class="ifmath-description__text ifmath-description__text--justify">
+                Multiplicação de todos os termos da equação por <strong>-1</strong>
+                pois a variável é negativa.
+              </p>
+            </div>
+          </div>
+
+          <!-- Passo 5 -->
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class="ifmath-description__step__title">Passo 5:</h3>
+            </div>
+            <div class="col-sm-12">
+              <ng-katex [equation]="getArrayItem(equationTwo,5)" [options]="options"></ng-katex>
+            </div>
+            <div class="col-sm-12">
+              <p class="ifmath-description__text ifmath-description__text--justify">
+                Ao multiplicar todos os termos da equação por <strong>-1</strong>, o sinal de todos os termos da
+                equação são trocados pela operação inversa.
+              </p>
+            </div>
+          </div>
+
+          <!-- Passo 6 -->
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class="ifmath-description__step__title">Passo 6:</h3>
+            </div>
+            <div class="col-sm-12">
+              <ng-katex [equation]="getArrayItem(equationTwo,6)" [options]="options"></ng-katex>
+            </div>
+            <div class="col-sm-12">
+              <p class="ifmath-description__text ifmath-description__text--justify">
+                Como estamos procurando a varíavel <strong>x</strong>, temos que realizar a operação inversa com o
+                coeficiente
+                <strong>4</strong> que neste caso esta multiplicando e passará dividindo a constante <strong>-10</strong>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Passo 7 -->
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class="ifmath-description__step__title">Passo 7:</h3>
+            </div>
+            <div class="col-sm-12">
+              <ng-katex [equation]="getArrayItem(equationTwo,7)" [options]="options"></ng-katex>
+            </div>
+            <div class="col-sm-12">
+              <p class="ifmath-description__text ifmath-description__text--justify">
+                Simplificamos pelo número <strong>-2</strong>, que é MDC entre o numerador e o denominador da fração.
+              </p>
+            </div>
+          </div>
+
+          <h5>Gráfico</h5>
+          <div class="row">
+            <div class="col-sm-12">
+              <img class="mx-auto d-block" src="assets/images/examples/egp_example_2.jpg"><br />
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

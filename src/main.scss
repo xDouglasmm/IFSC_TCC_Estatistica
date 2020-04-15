@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import './assets/styles/_contentViews.scss';
+@import './assets/styles/_description.scss';
+@import './assets/styles/_sidebar.scss';
+@import './assets/styles/_theme.scss';
+@import './assets/styles/_form.scss';
+@import '~katex/dist/katex.css';
+
+$white : #FDFDFF;
+$height: 100%;
+$width: 100%;
+$margin: 0;
+
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,body {
+    height: $height;
+    width: $width;
+    margin: $margin;
+    background-color: white;
+}
+
+.row{
+    margin: $margin !important;
+}
+
+a{
+    font-family: 'Raleway', sans-serif;
+}
+

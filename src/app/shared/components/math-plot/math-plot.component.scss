@@ -1,0 +1,38 @@
+.function-plot {
+    background-color: white;
+    width: 800px;
+    height: 450px;
+  .annotations {
+    color: greenyellow;
+    background-color: greenyellow;
+  }
+  .x.axis {
+    .tick {
+      line {
+        // grid's vertical lines
+        color: greenyellow;
+        background-color: greenyellow;
+      }
+      text {
+        // x axis labels
+      }
+    }
+    path.domain {
+      // d attribute defines the graph bounds
+    }
+  }
+
+  .y.axis {
+    .tick {
+      line {
+        // grid's horizontal lines
+      }
+      text {
+        // y axis labels
+      }
+    }
+    path.domain {
+      // d attribute defines the graph bounds
+    }
+  }
+}

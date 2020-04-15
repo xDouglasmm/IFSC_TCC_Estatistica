@@ -1,0 +1,184 @@
+<geo-base-view>
+
+  <div class="btn-container row">
+    <h3 class="col-12 text-center">Volume da esfera</h3>
+  </div>
+  <!-- Botões de navegação -->
+  <div class="btn-container mt-2 row">
+    <h5 class="mt-2 col-12 text-center">Escolha abaixo a propriedade que deseja calcular referente a esfera</h5>
+    <geo-btn *ngFor="let button of buttons; let i = index" [name]="button.title" [route]="button.route"></geo-btn>
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="btn-container mt-2 row">
+    <!-- Inputs -->
+    <p class="mt-1 col-12 text-center">Entre com a medida do raio(<ng-katex equation="\color{red}r"></ng-katex>):
+      <!-- Campos de entrada -->
+      <input class="btn btn-secondary bg-white text-body" type="number" [(ngModel)]="radius"
+        oninput="this.value = Math.abs(this.value)" (ngModelChange)="changeRadius()" max="50" min="5" />
+    </p>
+
+    <div [className]="errorInput == true ? 'mt-1 alert alert-danger text-body mx-auto' : 'mt-1 alert alert-primary text-body mx-auto'"
+      role="alert">
+      O raio deve ser um valor inteiro contido entre <b>5</b> e <b>50</b>.
+    </div>
+
+    <!-- Cena -->
+    <geo-scene class="col-12 row px-0 img-fluid order-md-2 order-1" [hasOrbitControls]="true" [hasPerspective]="true">
+    </geo-scene>
+  </div>
+
+  <!-- Propriedades -->
+  <div class="rightbar px-3 vh-100">
+    <h3>Propriedades:</h3>
+    <p>
+      É o conjunto de todos os seus pontos, desde o centro até a superfície.
+    </p>
+    <p class="text-center">
+      <ng-katex class="explicacao"
+        equation=" \color{black}{V = \dfrac{4}{3} \ \cdot \pi \cdot \color{red}{r} \color{black}{^3}} "></ng-katex>
+    </p>
+    <!-- Imagem -->
+    <div class="text-center">
+      <img class="img-fluid" src="assets/images/geometria/esfera/area-volume/volume-esfera.svg">
+    </div>
+    <br />
+    <!-- Exemplo -->
+    <hr />
+
+    <!-- Accordion -->
+    <div class="accordion" id="accordionExample">
+
+      <!-- Exemplo -->
+      <div class="card">
+        <div class="card-header" id="heading" data-toggle="collapse" data-target="#collapse">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse"
+              aria-expanded="true" aria-controls="collapse">
+              <p *ngIf="isApprox else elseResult">
+                Cálculo <ng-katex class="explicacao"
+                  equation="\approx {{ (4/3 * (radius*radius*radius)).toFixed(2) }} \pi \  u.v.">
+                </ng-katex>
+              </p>
+              <ng-template #elseResult>
+                Cálculo <ng-katex class="explicacao" equation="= {{ (4/3 * (radius*radius*radius)) }} \pi \  u.v.">
+                </ng-katex>
+              </ng-template>
+            </button>
+
+            <i class="fa fa-arrow-circle-down float-right mt-2 mr-2 ml-3" data-toggle="collapse"
+              data-target="#collapse"></i>
+          </h2>
+        </div>
+
+        <div id="collapse" class="collapse" aria-labelledby="heading" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pl-0 pr-0">
+                <div class="panel-group" id="accordion">
+
+                  <!-- Passo a passo -->
+                  <div class="panel-group" id="accordion">
+                    <!-- Passo 1  -->
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#one" class="">
+                            <p>
+                              <ng-katex class="explicacao"
+                                equation="\color{black}{V = \dfrac{4}{3} \ \cdot \pi \cdot \color{red}{r} \color{black}{^3}}">
+                              </ng-katex>
+
+                              <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                                data-target="#collapse"></i>
+                            </p>
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="one" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          Fórmula para calcular o volume da esfera.
+                          <ul>
+                            <li>
+                              <ng-katex equation="\color{red}{ r }"></ng-katex> = raio
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+
+                    <!-- Passo 2  -->
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#two" class="">
+                            <p>
+                              <ng-katex class="explicacao"
+                                equation="\color{black}{V = \dfrac{4}{3} \ \cdot \pi \cdot \color{red}{ {{radius}} } \color{black}{ ^3 }}">
+                              </ng-katex>
+
+                              <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                                data-target="#collapse"></i>
+                            </p>
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="two" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          Substitui os valores na fórmula, eleva o raio(<ng-katex
+                            equation="\textcolor{red}{ {{radius}} }">
+                          </ng-katex>) ao cubo e multiplica por <ng-katex equation="\dfrac{4}{3}">
+                          </ng-katex>.
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+
+                    <!-- Passo 3  -->
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#three" class="">
+                            <p *ngIf="isApprox else elseBlock">
+                              <ng-katex class="explicacao"
+                                equation="\color{black}{V \approx {{ (4/3 * (radius*radius*radius)).toFixed(2) }} \color{black}{ \pi \  u.v. }}">
+                              </ng-katex>
+
+                              <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                                data-target="#collapse"></i>
+                            </p>
+                            <ng-template #elseBlock>
+                              <ng-katex class="explicacao"
+                                equation="\color{black}{V = {{ 4/3 * (radius*radius*radius) }} \color{black}{ \pi \  u.v. }}">
+                              </ng-katex>
+
+                              <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                                data-target="#collapse"></i>
+                            </ng-template>
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="three" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          Resultado final em unidades de volume(u.v).
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <!-- End passo a passo -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End exemplo -->
+
+    </div>
+    <!-- end accordion -->
+
+  </div>
+
+</geo-base-view>

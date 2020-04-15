@@ -1,0 +1,19 @@
+$green: #359d6e ;
+
+nav{
+    min-height: 50px;
+    z-index: 10;
+    background-color: $green;
+}
+.nav-link img{
+    height: 15px;
+}
+
+#titulo{
+    position: absolute;
+    width: 100px;
+    left: 50%;
+    margin-left: -50px;
+    text-align: center;
+}
+

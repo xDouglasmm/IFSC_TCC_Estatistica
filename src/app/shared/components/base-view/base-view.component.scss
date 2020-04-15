@@ -1,0 +1,64 @@
+$height_container: calc(100% - 56px);
+$height: 100%;
+$weight: 100%;
+$white: #FDFDFF;
+$grey: rgb(232, 233, 233);
+
+.ifmath-view {
+  width: $weight;
+  height: $height_container;
+  background-color: white !important;
+
+  &__col-sidebar {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  &__row__offcanvas {
+    height: $height;
+  }
+
+  #sidebar {
+    width: inherit;
+    min-width: 220px;
+    max-width: 220px;
+    float: left;
+    height: $height;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: $grey;
+  }
+
+  #main {
+    height: $height;
+    overflow-x: auto;
+  }
+
+  /*
+   * off Canvas sidebar
+   * --------------------------------------------------
+   */
+  @media screen and (max-width: 768px) {
+    &__row__offcanvas {
+      position: relative;
+      -webkit-transition: all 0.25s ease-out;
+      -moz-transition: all 0.25s ease-out;
+      transition: all 0.25s ease-out;
+      width: calc(100% + 220px);
+    }
+
+    &__row__offcanvas__left {
+      left: -220px;
+    }
+
+    &__row__offcanvas__left.active {
+      left: 0;
+    }
+
+    &__sidebar__offcanvas {
+      position: absolute;
+      top: 0;
+    }
+  }
+}

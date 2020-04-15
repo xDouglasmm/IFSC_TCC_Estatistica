@@ -1,0 +1,299 @@
+<geo-base-view>
+
+  <div class="btn-container row">
+    <h3 class="col-12 text-center">Calota da esfera</h3>
+  </div>
+  <!-- Botões de navegação -->
+  <div class="btn-container mt-2 row">
+    <h5 class="mt-2 col-12 text-center">Escolha abaixo a propriedade que deseja calcular referente a esfera</h5>
+    <geo-btn *ngFor="let button of buttons; let i = index" [name]="button.title" [route]="button.route"></geo-btn>
+  </div>
+
+  <!-- Conteudo -->
+  <div class="content-container col-12 row px-0 align-items-center justify-content-center">
+    <!-- Inputs -->
+    <div class="mt-4">
+      <p>
+        Entre com a medida do
+        raio da esfera(<ng-katex equation="\color{blue}{ r }"></ng-katex>):
+        <input class="btn btn-secondary bg-white text-body" type="number" [(ngModel)]="radius"
+          oninput="this.value = Math.abs(this.value)" (ngModelChange)="changeRadius()" max="32" min="5" />
+        e altura(<ng-katex equation="\color{red}{ h }"></ng-katex>):
+        <input class="btn btn-secondary bg-white text-body" type="number" [(ngModel)]="height"
+          oninput="this.value = Math.abs(this.value)" (ngModelChange)="changeHeight()" max="60" min="1" />
+      </p>
+    </div>
+    <div
+      [className]="errorInput === true ? 'mt-1 alert alert-danger text-center' : 'mt-1 alert alert-primary text-center'"
+      role="alert">
+      O raio deve ser um valor inteiro contido entre <b>5</b> e <b>50</b>. <br>
+      A altura deve ser um valor inteiro contido entre <b>1</b> e <b>{{radius * 2}}</b>.
+    </div>
+
+
+    <!-- Cena -->
+    <geo-scene class="col-12 row px-0 bg-primary img-fluid" [hasOrbitControls]="true" [hasPerspective]="true">
+    </geo-scene>
+  </div>
+
+
+  <!-- Propriedades -->
+  <div class="rightbar px-3 vh-100">
+    <h3>Propriedades:</h3>
+    <p class="mb-0">
+      Uma secção sempre gera uma calota, se a altura for igual ao raio temos uma semiesfera.
+    </p>
+
+    <!-- Fórmula da área da calota -->
+    <p class="text-center">
+      <ng-katex class="explicacao"
+        equation="\color{black}{ A_{calota} = {2} \pi \cdot \color{blue}{r} \color{black}{ \cdot \color{red}{h}  }}">
+      </ng-katex>
+    </p>
+    <!-- Fórmula do volume da colta -->
+    <p class="text-center mb-0">
+      <ng-katex class="explicacao"
+        equation="\color{black}{ V_{calota} = \frac{1}{3} \cdot \pi \cdot \color{red}{h} \color{black}{^2 (3 \cdot }\color{blue}{r} \color{black}{-} \color{red}{h} \color{black}{)} }">
+      </ng-katex>
+    </p>
+
+    <!-- Imagem -->
+    <div class="text-center">
+      <img class="img-fluid" src="assets/images/geometria/esfera/calota-esfera-detalhada.png">
+    </div>
+
+    <hr class="mt-0" />
+
+    <!-- Accordion -->
+    <div class="accordion" id="accordionExample">
+      <!-- Área da calota -->
+      <div class="card">
+        <div class="card-header" id="headingGeratriz" data-toggle="collapse" data-target="#collapseGeratriz">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseGeratriz"
+              aria-expanded="true" aria-controls="collapseGeratriz">
+              Área da calota <ng-katex class="explicacao" equation=" = {{ (radius * height) * 2 }}  \pi \ u.a.">
+              </ng-katex>
+            </button>
+
+            <i class="fa fa-arrow-circle-down float-right mt-2 mr-3" data-toggle="collapse"
+              data-target="#collapseGeratriz"></i>
+          </h2>
+        </div>
+
+        <div id="collapseGeratriz" class="collapse" aria-labelledby="headingGeratriz" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pl-0 pr-0">
+                <div class="panel-group" id="accordion">
+
+                  <!-- Passo 1 -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsePasso1" class="">
+                          <p>
+                            <ng-katex class="explicacao"
+                              equation="\color{black}{ A_{calota} = {2} \pi \cdot \color{blue}{r} \color{black}{ \cdot \color{red}{h}  }}">
+                            </ng-katex>
+
+                            <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                              data-target="#collapseGeratriz"></i>
+                          </p>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapsePasso1" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        Fórmula para o cálculo da área da calota.
+                        <ul>
+                          <li>
+                            <ng-katex equation="\color{blue}{ r }"></ng-katex> = raio
+                          </li>
+                          <li>
+                            <ng-katex equation="\color{red}{ h }"></ng-katex> = altura
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+
+                  <!-- Passo 2 -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsePasso2" class="">
+                          <p>
+                            <ng-katex class="explicacao"
+                              equation="\color{black}{ A_{calota} = {2} \pi \cdot \color{blue}{ {{ radius }} } \color{black}{ \cdot } \color{red}{ {{ height }} } }">
+                            </ng-katex>
+
+                            <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                              data-target="#collapseGeratriz"></i>
+                          </p>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapsePasso2" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        Aplicando os valores na fórmula, onde o raio é <ng-katex
+                          equation="\color{blue}{ {{ radius }} }"></ng-katex> e a altura <ng-katex
+                          equation="\color{red}{ {{ height }} }"></ng-katex>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+
+                  <!-- Passo 3 -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsePasso3" class="">
+                          <p>
+                            <ng-katex class="explicacao"
+                              equation="\color{black}{ A_{calota} = {{ (radius * height) * 2 }}  \color{black}{ \pi \ u.a.} }">
+                            </ng-katex>
+
+                            <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                              data-target="#collapseGeratriz"></i>
+                          </p>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapsePasso3" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        Multiplicamos o raio (<ng-katex equation="\color{blue}{ {{radius}} }"></ng-katex>) pela (
+                        <ng-katex equation="\color{red}{ {{height}} }"></ng-katex>) e por último multiplicamos por 2
+                        dando o resultado final.
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end área da calota -->
+
+      <!-- Volume da calota -->
+      <div class="card">
+        <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+              aria-expanded="false" aria-controls="collapseTwo">
+              <p *ngIf="isApprox else elseVolResult" class="mb-0">
+                Volume da calota
+                <ng-katex class="explicacao"
+                  equation="\approx {{ (1/3 * height * height * ( 3 * radius - height )).toFixed(2) }} \pi \ u.v.">
+                </ng-katex>
+              </p>
+              <ng-template #elseVolResult>
+                Volume da calota =
+                <ng-katex class="explicacao"
+                  equation="{{ 1/3 * height * height * ( 3 * radius - height ) }} \pi \ u.v.">
+                </ng-katex>
+              </ng-template>
+
+            </button>
+
+            <i class="fa fa-arrow-circle-down float-right mt-2 mr-3" data-toggle="collapse"
+              data-target="#collapseTwo"></i>
+          </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body">
+            <br>
+
+            <!-- Passo 1  -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" class="">
+                    <p>
+                      <ng-katex class="explicacao"
+                        equation="\color{black}{ V = \frac{1}{3} \cdot \pi \cdot \color{red}{h} \color{black}{^2 (3 \cdot }\color{blue}{r} \color{black}{-} \color{red}{h} \color{black}{)} }">
+                      </ng-katex>
+
+                      <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                        data-target="#collapseGeratriz"></i>
+                    </p>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseSix" class="panel-collapse collapse">
+                <div class="panel-body">
+                  Fórmula para calcular o volume da calota.
+                  <ul>
+                    <li>
+                      <ng-katex equation="\color{blue}{ r }"></ng-katex> = raio
+                    </li>
+                    <li>
+                      <ng-katex equation="\color{red}{ h }"></ng-katex> = altura
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <hr>
+
+            <!-- Passo 2  -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" class="">
+                    <p>
+                      <ng-katex class="explicacao"
+                        equation="\textcolor{black}{V = \frac{1}{3} \cdot \pi \cdot \color{red}{ {{ height }} } \color{black}{ ^2 (3 \cdot } \color{blue}{ {{ radius }} } \color{black}{ - }  \color{red}{ {{ height }} } \color{black}{ ) }}">
+                      </ng-katex>
+
+                      <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                        data-target="#collapseGeratriz"></i>
+                    </p>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseSeven" class="panel-collapse collapse">
+                <div class="panel-body">
+                  Multiplica o raio(<ng-katex equation="\textcolor{blue}{ {{radius}} }"></ng-katex>) por 3 e subtrai
+                  pela altura(<ng-katex equation="\textcolor{red}{ {{height}} }"></ng-katex>). Multiplica o resultado
+                  pela altura(<ng-katex equation="\textcolor{red}{ {{height}} }"></ng-katex>) ao quadrado e por
+                  <ng-katex equation="\textcolor{black}{ \frac{1}{3} }"></ng-katex>
+                </div>
+              </div>
+            </div>
+            <hr>
+
+            <!-- Passo 3  -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight" class="">
+                    <p>
+                      <ng-katex class="explicacao"
+                        equation="\color{black}{V =  {{ 1/3 * height * height * ( 3 * radius - height ) }} } \color{black}{ \pi \ u.v.}">
+                      </ng-katex>
+
+                      <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                        data-target="#collapseGeratriz"></i>
+                    </p>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseEight" class="panel-collapse collapse">
+                <div class="panel-body">
+                  Resultado final.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end accordion -->
+  </div>
+
+</geo-base-view>

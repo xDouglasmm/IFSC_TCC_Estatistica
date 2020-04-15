@@ -1,0 +1,25 @@
+<section class="row results">
+
+  <div *ngIf="loading" class="col-sm-12">
+    <ifmath-ng-loading-spinner></ifmath-ng-loading-spinner>
+  </div>
+
+  <div *ngIf="!loading" class="col-sm-12">
+    <li class="results__item" *ngFor="let resultado of resultados; let i = index">
+      <div [attr.data-target]="'#resultado'+i" data-toggle="collapse">
+        <div class="results__item__icon">
+          <div *ngIf="'#resultado'+i; else elseBlock">
+            <i class=" fa fa-arrow-circle-down results__item__icon__fa__down" aria-hidden="true"></i>
+          </div>
+          <ng-template #elseBlock>
+            <i class=" fa fa-arrow-circle-down results__item__icon__fa__up" aria-hidden="true"></i>
+          </ng-template>
+        </div>
+        <img [src]="'data:image/png;base64,'+ resultado.imagem" />
+      </div>
+      <div id="{{'resultado'+ i}}" class="collapse results__item__text">
+        <div [innerHTML]="resultado.explicacao"></div>
+      </div>
+    </li>
+  </div>
+</section>

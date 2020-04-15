@@ -1,0 +1,29 @@
+<section class="info">
+
+  <div class="row mt-4">
+    <h3 class="col-12 text-center">Área e Volume</h3>
+    <!-- Botões de navegação -->
+    <div class="col-12 btn-container mt-2 row">
+      <h5 class="mt-2 col-12 text-center">Escolha abaixo a propriedade que deseja calcular referente a esfera</h5>
+      <div class="row col-12">
+        <geo-btn class="mx-auto" *ngFor="let button of buttons; let i = index" [name]="button.title"
+          [route]="button.route"></geo-btn>
+      </div>
+    </div>
+
+    <!-- Breve explicação -->
+    <div class="content-container col-12 row px-0 d-flex align-items-center justify-content-center">
+      <div class="row col-12 mt-5">
+        <div class="col-lg-6 col-12 text-center">
+          <h5 class="text-center">Área da esfera</h5>
+          <img class="img-fluid" src="assets/images/geometria/esfera/area-volume/area-esfera.svg">
+        </div>
+        <div class="col-lg-6 col-12 text-center">
+          <h5 class="text-center mb-0">Volume da esfera</h5>
+          <img class="img-fluid" src="assets/images/geometria/esfera/area-volume/volume-esfera.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

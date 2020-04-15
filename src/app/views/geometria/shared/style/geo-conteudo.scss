@@ -1,0 +1,49 @@
+@import '../../../../../../assets/styles/theme';
+
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-container {
+  display: contents;
+}
+
+.card {
+  border-color: $background-color-blue !important;
+
+  .card-header {
+    border-color: $background-color-blue !important;
+    background-color: white;
+    text-decoration: none;
+    padding: 7px 0 7px 0;
+    border-bottom: 2px $background-color-blue solid;
+  }
+
+  .card-header:hover {
+    border-color: $background-color-blue !important;
+    background-color: $background-color-blue;
+
+    .btn {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  .card-body {
+    border-bottom: 2px $background-color-blue solid;
+  }
+
+  .btn {
+    color: $background-color-blue;
+    text-decoration: none;
+
+  }
+
+}
+
+input[type="number"]{
+  max-width: 90px;
+}
+
+

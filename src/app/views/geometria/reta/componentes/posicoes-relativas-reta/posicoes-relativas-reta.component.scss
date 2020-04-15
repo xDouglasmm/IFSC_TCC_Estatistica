@@ -1,0 +1,28 @@
+$cor-padrao: rgba(70, 131, 180, 0.555);
+$cor-padrao-escura:rgb(70, 131, 180);
+
+.container {
+  position: fixed;
+}
+
+.botoes {
+  padding-top: 1em;
+}
+
+.botao {
+    border-color: $cor-padrao-escura;
+    color: $cor-padrao-escura;
+}
+
+.botao:hover {
+  background-color: $cor-padrao-escura;
+  color: white;
+}
+
+.botao:link {
+  background-color: $cor-padrao-escura;
+}
+
+.retas {
+  padding-top: 1em;
+}

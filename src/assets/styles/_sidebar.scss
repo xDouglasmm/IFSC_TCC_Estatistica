@@ -1,0 +1,13 @@
+$white: #ffffff;
+$yellow: #F5CC04;
+$yellow-border: rgb(223, 189, 19);
+
+.sidebar-nav {
+
+  .list-group-item.active {
+    z-index: 2;
+    color: $white;
+   
+  }
+}
+

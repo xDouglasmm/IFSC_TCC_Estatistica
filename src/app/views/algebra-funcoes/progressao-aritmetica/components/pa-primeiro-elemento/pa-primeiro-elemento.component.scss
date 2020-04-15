@@ -1,0 +1,15 @@
+:host{
+    width: 100%;
+}
+.alinhamento-texto{
+    text-align: left;
+}
+.img-formula{
+    border: 2px solid #f26528;
+    border-radius: 10px;
+}
+@media (min-width: 576px) {
+    .borda-desc-form{
+        border-right: 1px solid white;
+    }
+}

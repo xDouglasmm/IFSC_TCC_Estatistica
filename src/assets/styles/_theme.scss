@@ -1,0 +1,261 @@
+$background-color-blackgrey: #CFD5D2;
+$background-color-green: #359d6e;
+$background-color-purple: #8b67af;
+$background-color-blue: #4683b4;
+$background-color-blackgrey-houver: rgb(143, 146, 144);
+$background-color-orange: #f26528;
+$background-color-green-houver:#53d89c;
+$background-color-blue-houver:#4683b4;
+$background-color-purple-houver: #b58fdb;
+$background-color-orange-houver: #f54e07;
+$button-color: white;
+$width: 100%;
+$height: 100%;
+
+.ifmath-theme {
+  height: $height;
+  width: $width;
+  margin-bottom: 20px;
+
+  .container {
+    margin-bottom: 2%;
+  }
+
+  &__image__container {
+    margin-top: 0.5px;
+    width: $width;
+
+    &--blackblackgrey {
+      background-color: $background-color-blackgrey;
+    }
+
+    &--green {
+      background-color: $background-color-green;
+    }
+
+    &--purple {
+      background-color: $background-color-purple;
+    }
+
+    &--orange {
+      background-color: $background-color-orange;
+    }
+
+    &--blue {
+      background-color: $background-color-blue;
+    }
+  }
+
+  &__image__right {
+    margin-top: 5px;
+    text-align: right;
+  }
+
+  &__titled__centralized {
+    display: flex;
+    align-items: center;
+  }
+
+  h4 {
+    margin-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    color: rgb(71, 71, 71);
+  }
+
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 3em;
+    }
+
+    img {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    h1 {
+      font-size: 3.5em;
+    }
+
+    img {
+      height: 95px;
+    }
+  }
+
+  a {
+    height: 75px;
+    width: 250px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .col-lg-4,
+  .col-md-6 {
+    text-align: center;
+  }
+
+  .btn {
+    white-space: normal;
+    margin-top: 15px;
+
+    &-outline-success {
+      height: 80px;
+      width: 270px;
+      border-width: 2px;
+      font-weight: bold;
+
+      &--blackgrey {
+        border-color: $background-color-blackgrey;
+        color: $background-color-blackgrey;
+
+        &:hover {
+          font-weight: bold;
+          color: $button-color;
+          background-color: $background-color-blackgrey;
+          border-color: $background-color-blackgrey-houver;
+        }
+
+        &:active,
+        &:focus {
+          color: $button-color;
+          outline: none !important;
+          box-shadow: none !important;
+          background-color: $background-color-blackgrey !important;
+          border-color: $background-color-blackgrey-houver !important;
+        }
+
+        &.disabled,
+        &:disabled {
+          color: $background-color-blackgrey
+        }
+
+        &.disabled:hover {
+          color: $button-color;
+        }
+      }
+
+      &--green {
+        border-color: $background-color-green-houver;
+        color: $background-color-green;
+
+        &:hover {
+          font-weight: bold;
+          color: $button-color;
+          background-color: $background-color-green;
+          border-color: $background-color-green-houver;
+        }
+
+        &:active,
+        &:focus {
+          color: $button-color;
+          outline: none !important;
+          box-shadow: none !important;
+          background-color: $background-color-green !important;
+          border-color: $background-color-green-houver !important;
+        }
+
+        &.disabled,
+        &:disabled {
+          color: $background-color-green
+        }
+
+        &.disabled:hover {
+          color: $button-color;
+        }
+      }
+
+      &--purple {
+        border-color: $background-color-purple-houver;
+        color: $background-color-purple;
+
+        &:hover {
+          font-weight: bold;
+          color: $button-color;
+          background-color: $background-color-purple;
+          border-color: $background-color-purple-houver;
+        }
+
+        &:active,
+        &:focus {
+          color: $button-color;
+          outline: none !important;
+          box-shadow: none !important;
+          background-color: $background-color-purple !important;
+          border-color: $background-color-purple-houver !important;
+        }
+
+        &.disabled,
+        &:disabled {
+          color: $background-color-purple
+        }
+
+        &.disabled:hover {
+          color: $button-color;
+        }
+      }
+
+      &--orange {
+        border-color: $background-color-orange-houver;
+        color: $background-color-orange;
+
+          &:hover {
+            font-weight: bold;
+            color: $button-color;
+            background-color: $background-color-orange;
+            border-color: $background-color-orange-houver;
+          }
+
+          &:active,
+          &:focus {
+            color: $button-color;
+            outline: none !important;
+            box-shadow: none !important;
+            background-color: $background-color-orange !important;
+            border-color: $background-color-orange-houver !important;
+          }
+
+          &.disabled,
+          &:disabled {
+            color: $background-color-orange
+          }
+
+          &.disabled:hover {
+            color: $button-color;
+          }
+      }
+
+      &--blue {
+        border-color: $background-color-blue;
+        color: $background-color-blue;
+
+        &:hover {
+          font-weight: bold;
+          color: $button-color;
+          background-color: $background-color-blue;
+          border-color: $background-color-blue-houver;
+        }
+
+        &:active,
+        &:focus {
+          color: $button-color;
+          outline: none !important;
+          box-shadow: none !important;
+          background-color: $background-color-blue !important;
+          border-color: $background-color-blue-houver !important;
+        }
+
+        &.disabled,
+        &:disabled {
+          color: $background-color-blue
+        }
+
+        &.disabled:hover {
+          color: $button-color;
+        }
+      }
+    }
+  }
+}

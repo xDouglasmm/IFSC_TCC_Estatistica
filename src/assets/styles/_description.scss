@@ -1,0 +1,83 @@
+$blackgrey: #5C5C5D;
+$orange: #f26528;
+$weight: 100%;
+$height: 100%;
+
+.ifmath-description {
+  height: $height;
+  width: $weight;
+  margin-left: 5px;
+
+  &__step__title {
+    text-align: center;
+    margin-top: 25px;
+  }
+
+  &__text {
+    text-indent: 2em;
+
+    &--justify {
+      text-align: justify;
+    }
+  }
+
+  &__button__solution {
+    background-color: gray;
+    width: $weight;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: 2px solid red;
+    padding: 10px;
+    border-radius: 10px;
+
+    &--blackgrey {
+      background-color: $orange;
+      color: white;
+    }
+
+    &--blackgrey {
+      background-color: $blackgrey;
+      border-color: white;
+      color: white;
+
+      &:hover {
+        font-weight: bold;
+        color: white;
+        background-color: #A2A2A3 !important;
+        border-color: white !important;
+      }
+    }
+  }
+
+  .katex {
+    font-size: 35px !important;
+  }
+
+  .image-formula {
+    border-radius: 10px;
+
+    &--blackgrey {
+      border: 2px solid $blackgrey;
+    }
+
+    &--orange {
+      border: 2px solid $orange;
+    }
+  }
+
+  .image-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+}

@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light" [style.background-color]="color"> 
+  <a class="navbar-brand" [routerLink]="['']">IFMath</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Fodendo menu do lado esquerdo -->
+  <div id="navbarNavDropdown" class="navbar-collapse collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/numeros_operacoes']" data-toggle="tooltip" title="Número e Operações">
+          <img class="img-responsive" src="assets/images/icons/number.svg" alt="Número e Operações">
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/algebra_e_funcoes']" data-toggle="tooltip" title="Algebra e Funções">
+          <img class="img-responsive" src="assets/images/icons/algebra.svg" alt="Algebra e Funções">
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/geometria']" data-toggle="tooltip" title="Geometria">
+          <img class="img-responsive" src="assets/images/icons/geometry.svg" alt="Geometria">
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['page-not-found']" data-toggle="tooltip" title="Estatística">
+          <img class="img-responsive" src="assets/images/icons/estatistica.svg" alt="Estatística">
+        </a>
+      </li>
+      <div id="titulo">
+        <label class="navbar-brand">{{titulo}}</label>
+      </div>
+    </ul>
+
+
+    <!-- Fodendo menu do lado direto -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/sobre']">Colaboradores</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,23 @@
+.definition {
+    &__group {
+        &__img {
+            max-height: 45vh !important;
+            min-width: 10vw;
+        }
+
+        &__description {
+            p {
+                display: inline-flex;
+            }
+
+            /* "Traçado" que tem em cima de duas letras */
+            &--distance:before {
+                display: block;
+                content: '';
+                width: 27px;
+                height: 1px;
+                background: #000;
+            }
+        }
+    }
+}

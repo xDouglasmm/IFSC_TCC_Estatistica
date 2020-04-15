@@ -1,0 +1,19 @@
+$cor-padrao: rgba(70, 131, 180, 0.555);
+$cor-padrao-escura:rgb(70, 131, 180);
+
+.resolucao {
+  text-align: center;
+}
+
+.botao {
+  margin-top: 1em;
+  border-color: $cor-padrao-escura;
+  color: $cor-padrao-escura;
+  background-color: white;
+}
+
+.botao:hover {
+  background-color: $cor-padrao-escura;
+  color: white;
+}
+

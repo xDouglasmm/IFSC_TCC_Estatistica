@@ -1,0 +1,26 @@
+.ifmath-conteudo{
+    &__titulo{
+      margin-bottom: 20px;
+    }
+    &__txt-titulo{
+      color:black;
+      line-height: 30px;
+      font-size: 32px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto 
+    }
+    &__img{
+      border: 2px solid #f26528;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: #fff;
+      max-width: 280px;
+    }
+  
+    @media (min-width: 576px) {
+      &__borda{
+        border-right: 1px solid white;
+      }
+    }
+  }

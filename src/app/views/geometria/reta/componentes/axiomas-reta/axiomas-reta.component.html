@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="col-sm-12 col-md-12 botoes">
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+        <button class="btn btn-block btn-outline-primary botao" (click)="onSetAxioma1()">Axioma 1 <i class="fa fa-caret-down"
+            aria-hidden="true"></i></button>
+      </div>
+
+      <div class="col-sm-12 col-md-4">
+        <button class="btn btn-block btn-outline-primary botao" (click)="onSetAxioma2()">Axioma 2 <i class="fa fa-caret-down"
+            aria-hidden="true"></i></button>
+      </div>
+
+      <div class="col-sm-12 col-md-4">
+        <button class="btn btn-block btn-outline-primary botao" (click)="onSetAxioma3()">Axioma 3 <i class="fa fa-caret-down"
+            aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-12 axiomas" [ngSwitch]="formModel.get('axioma').value">
+    <div *ngSwitchCase="'um'">
+      <h5>
+        <app-axioma-um></app-axioma-um>
+      </h5>
+    </div>
+    <div *ngSwitchCase="'dois'">
+      <h5>
+        <app-axioma-dois></app-axioma-dois>
+      </h5>
+    </div>
+    <div *ngSwitchCase="'tres'">
+      <h5>
+        <app-axioma-tres></app-axioma-tres>
+      </h5>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+<section class="ifmath-view">
+  <div class="ifmath-view__row__offcanvas ifmath-view__row__offcanvas__left">
+     <div id="sidebar" class="ifmath-view__sidebar__offcanvas">
+      <div class="col-lg-12 ifmath-view__col-sidebar">
+        <ng-content select=".slidebar"></ng-content>
+      </div>
+    </div>
+    <div id="main">
+      <div class="col-lg-12 col-main">
+        <p class="d-block d-sm-none">
+          <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+          </button>
+        </p>
+        <div class="container-fluid px-0">
+          <div class="row">
+              <ng-content select=".content"></ng-content>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="push"></div>
+</section>

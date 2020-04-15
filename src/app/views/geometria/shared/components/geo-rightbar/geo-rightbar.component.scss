@@ -1,0 +1,52 @@
+@import '../../../../../../assets/styles/theme';
+
+
+.content-accordion {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    .card {
+        border-color: $background-color-blue;
+        color: $background-color-blue;
+
+        /* Title card */
+        .card-header {
+            padding: 12px 20px 12px 20px;
+            border-color: none;
+
+            button {
+                color: $background-color-blue;
+
+                .btn-link {
+                    color: $background-color-blue !important;
+                    text-decoration: none !important;
+                }
+            }
+        }
+
+        .card-header:hover {
+            color: white !important;
+            background-color: $background-color-blue !important;
+            text-decoration: none !important;
+        }
+
+        /* Content card */
+        .card-body {
+            color: #000;
+
+            /* "Traçado" que tem em cima de duas letras */
+            p {
+                display: inline-flex;
+
+                .distance:before {
+                    display: block !important;
+                    content: '' !important;
+                    width: 18px !important;
+                    height: 1px !important;
+                    background: #000 !important;
+                }
+            }
+
+        }
+    }
+}

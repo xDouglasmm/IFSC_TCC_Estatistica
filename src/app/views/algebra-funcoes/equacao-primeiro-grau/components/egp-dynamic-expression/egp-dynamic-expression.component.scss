@@ -1,0 +1,15 @@
+$height: 100%;
+$weight: 100%;
+
+:host {
+  width: $weight;
+  height: $height;
+}
+
+.context-plot{
+  background-color: white;
+}
+.plot{
+  display: table;
+  margin: 0 auto;
+}

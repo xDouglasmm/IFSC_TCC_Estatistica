@@ -1,0 +1,20 @@
+@import '../../../../../../assets/styles/theme';
+
+button {
+    border-color: $background-color-blue;
+    background-color: $button-color;
+    color: $background-color-blue;
+    white-space: normal;
+    //min-width: stretch;
+    min-width: -webkit-fill-available;
+}
+
+button:hover {
+    border-color: $background-color-blue;
+    background-color: $background-color-blue;
+    color: $button-color;
+}
+
+.selected {
+  background-color: $background-color-blue;
+}

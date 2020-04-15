@@ -1,0 +1,170 @@
+<geo-base-view>
+  <!-- Botões de navegação -->
+  <div class="btn-container mt-2 row align-items-center justify-content-center">
+    <div class=" col-12 text-center">
+      <h3 class="text-center">Área da base</h3>
+    </div>
+    <h5 class="mt-2 col-12 text-center">Escolha abaixo a área referente ao cone que deseja calcular</h5>
+    <geo-btn *ngFor="let button of buttons; let i = index" [name]="button.title" [route]="button.route"></geo-btn>
+  </div>
+
+  <div class="row content-container col-12 row px-0 align-items-center justify-content-center">
+    <!-- Entradas -->
+    <div class=" mt-4">
+      <p class="text-center">
+        Entre com a medida do raio(<ng-katex equation="\color{red}{r}"></ng-katex>):
+        <input class="btn btn-secondary bg-white text-body" type="number" [(ngModel)]="radius" oninput="this.value = Math.abs(this.value)"
+          (ngModelChange)="changeRadius()" max="50" min="5" />
+      </p>
+
+      <div [className]="errorInput === true ? ' mt-1 alert alert-danger' : ' mt-1 alert alert-primary'" role="alert">
+        O raio deve ser um valor inteiro contido entre <b>5</b> e <b>50</b>.
+      </div>
+    </div>
+
+    <!-- Cena -->
+    <geo-scene class="col-12 row px-0 bg-primary img-fluid" [hasOrbitControls]="true" [hasPerspective]="true">
+    </geo-scene>
+  </div>
+
+  <!--Propriedades-->
+  <div class="rightbar px-3 vh-100">
+    <h3>Propriedades</h3>
+    <p>
+      A base de um cone é um círculo de raio <ng-katex equation="r."></ng-katex>
+    </p>
+    <p class="text-center">
+      <ng-katex class="explicacao"
+        equation="\textcolor{black}{A_b = \pi \cdot \textcolor{red}{r} \textcolor{black}{^2}}">
+      </ng-katex>
+    </p>
+    <!-- Imagem -->
+    <div class="text-center">
+      <img class="img-fluid" src="assets/images/geometria/cone/cn-areas/area-base-cone.svg">
+    </div>
+
+    <hr>
+
+    <!-- Exemplo -->
+    <div class="accordion" id="accordionExample">
+      <div class="card">
+        <div class="card-header" id="headingPrincipal" data-toggle="collapse" data-target="#collapsePrincipal">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePrincipal"
+              aria-expanded="false" aria-controls="collapsePrincipal">
+              Cálculo = <ng-katex class="explicacao" equation="{{ radius * radius }}  \pi \ u.a. ">
+              </ng-katex>
+            </button>
+
+            <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+              data-target="#collapsePrincipal"></i>
+          </h2>
+        </div>
+        <div id="collapsePrincipal" class="collapse" aria-labelledby="headingPrincipal" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="panel-group" id="accordion">
+              <!--Passo 1-->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="">
+                      <p>
+                        <ng-katex class="explicacao"
+                          equation="\textcolor{black}{A_b = \pi \cdot \textcolor{red}{r} \textcolor{black}{^2}}">
+                        </ng-katex>
+                        <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                          data-target="#collapseGeratriz"></i>
+                      </p>
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    Fórmula para o cálculo da base.
+                    <ul>
+                      <li>
+                        <ng-katex equation="\color{red}{ r }"></ng-katex> = raio
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <!--Passo 2-->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="">
+                      <p>
+                        <ng-katex class="explicacao"
+                          equation="\textcolor{black}{A_b = \pi \cdot \color{red}{ {{ radius }} } \color{black}{ ^2 } }">
+                        </ng-katex>
+                        <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                          data-target="#collapseGeratriz"></i>
+                      </p>
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    Substitui-se o valor de <ng-katex equation="r"></ng-katex>
+                    (<ng-katex equation="\color{red}{ {{ radius }} }"></ng-katex>) na fórmula e
+                    elevamos ao quadrado.
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <!--Passo 3-->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="">
+                      <p>
+                        <ng-katex class="explicacao"
+                          equation="\textcolor{black}{A_b = \pi \cdot \color{red}{ {{ radius * radius }} } }">
+                        </ng-katex>
+                        <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                          data-target="#collapseGeratriz"></i>
+                      </p>
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    Multiplica-se o resultado do
+                    <ng-katex equation="\color{black}{ r^2 }"></ng-katex>
+                    (<ng-katex equation="\color{red}{ {{ radius * radius }} }"></ng-katex>)
+                    pelo valor de <ng-katex equation="\pi."></ng-katex>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <!--Passo 4-->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class="">
+                      <p>
+                        <ng-katex class="explicacao"
+                          equation="\textcolor{black}{A_b = \color{red}{ {{ radius * radius }} } \color{black}{ \pi \ u.a.} }">
+                        </ng-katex>
+                        <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                          data-target="#collapseGeratriz"></i>
+                      </p>
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    Resultado final em unidades de área (<ng-katex equation="u. a."></ng-katex>).
+                  </div>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</geo-base-view>

@@ -1,0 +1,52 @@
+<!-- region fomrulario -->
+<section class="ifmath-form__contener__body">
+  <!-- Form -->
+  <form (ngSubmit)="onSubmit()" #demoForm="ngForm" [formGroup]="formModel">
+    <div class="row">
+      <!-- Title -->
+      <div class="col-sm-12 ifmath-form__title">
+        <h1 class="fmath-form__title__text">Calculo do valor de x em uma Equação do 1° Grau</h1>
+      </div>
+      <!-- Fields -->
+      <div class="col-sm-12 col-md-7">
+        <div class="input-group">
+          <span class="input-group-addon input-group-addon--blackgrey" id="sizing-addon2">Equação</span>
+          <input type="text" name="expression" formControlName="expression" class="form-control ifmath-form__contener__body__input"
+            aria-describedby="sizing-addon2" placeholder="x - (3 + ( 4 - x))  = -x + 2">
+        </div>
+        <div>
+          <span class="ifmath-form__label ifmath-form__label--error" *ngIf="formModel.get('expression').hasError('required') && formModel.get('expression').touched">Campo
+            invalido!</span>
+        </div>
+
+      </div>
+
+      <!-- buttons -->
+      <div class="col-sm-12 col-md-5 ifmath-form__button__group">
+        <button type="submit" class="btn btn-success btn-success--blackgrey btn-success--semMargin" [disabled]="formModel.invalid" value="Calcular">Calcular</button>
+        <button type="reset" class="btn btn-success btn-success--blackgrey btn-success--semMargin" value="Limpar" (click)="onClear()">Limpar</button>
+      </div>
+    </div>
+
+  </form>
+
+  <!-- endregion -->
+
+  <!-- region Resultados -->
+  <div class="col-sm-12">
+    <ifmath-ng-results [loading]="loading" [resultados]="results"></ifmath-ng-results>
+  </div>
+
+  <!-- <div class="context-plot">
+    <ifmath-math-plot class="plot"></ifmath-math-plot>
+  </div> -->
+
+
+  <!-- endregion -->
+</section>
+
+<ifmath-ng-modal-error #modalError>
+  <div class="content">
+    <p> {{ errorMessage }} </p>
+  </div>
+</ifmath-ng-modal-error>

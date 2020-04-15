@@ -1,0 +1,383 @@
+<geo-base-view>
+
+  <!-- Botões de navegação -->
+  <div class="btn-container mt-2 row align-items-center justify-content-center">
+    <div class=" col-12 text-center">
+      <h3 class="text-center">Área lateral</h3>
+    </div>
+    <h5 class="mt-2 col-12 text-center">Escolha abaixo a área referente ao cone que deseja calcular</h5>
+    <geo-btn *ngFor="let button of buttons; let i = index" [name]="button.title" [route]="button.route"></geo-btn>
+  </div>
+
+  <div class="content-container col-12 row px-0 align-items-center justify-content-center">
+    <div class="mt-4">
+      <!-- Entradas -->
+      <p class="text-center">
+        Entre com a medida do raio(<ng-katex equation="\color{blue}{r}"></ng-katex>):
+        <input class="btn btn-secondary bg-white text-body" type="number" [(ngModel)]="radius"
+          oninput="this.value = Math.abs(this.value)" (ngModelChange)="changeInputs()" max="50" min="5" />
+        e da Altura(<ng-katex equation="\color{red}{h}"></ng-katex>):
+        <input class="btn btn-secondary bg-white text-body" type="number" [(ngModel)]="height"
+          oninput="this.value = Math.abs(this.value)" (ngModelChange)="changeInputs()" max="50" min="5" />
+      </p>
+
+      <div [className]="errorInput === true ? 'mt-1 alert alert-danger' : 'mt-1 alert alert-primary'" role="alert">
+        O raio e a altura devem ser um valor inteiro contido entre <b>5</b> e <b>50</b>.
+      </div>
+    </div>
+
+    <geo-scene class="col-12 row px-0 bg-primary img-fluid" [hasOrbitControls]="true" [hasPerspective]="true">
+    </geo-scene>
+  </div>
+
+  <!-- Propriedades -->
+  <div class="rightbar px-3 vh-100">
+    <h3>Propriedades</h3>
+    <p>
+      A área lateral equivale a área de um setor circular de raio <ng-katex equation="g."></ng-katex>
+    </p>
+    <p class="text-center">
+      <ng-katex class="explicacao"
+        equation="\textcolor{black}{A_l = \pi \cdot \textcolor{blue}{r} \cdot \textcolor{black}{ g } }">
+      </ng-katex>
+    </p>
+
+    <!-- Imagem -->
+    <div class="text-center">
+      <img class="img-fluid" src="assets/images/geometria/cone/cn-areas/area-lateral-cone.svg">
+    </div>
+
+    <hr>
+
+    <!-- Accordion -->
+    <div class="accordion" id="accordionExample">
+      <!-- Geratriz -->
+      <div class="card">
+        <div class="card-header" id="headingGeratriz" data-toggle="collapse" data-target="#collapseGeratriz">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseGeratriz"
+              aria-expanded="true" aria-controls="collapseGeratriz">
+              <p *ngIf="isApprox else elseGeratriz" class="mb-0">
+                Geratriz
+                <ng-katex class="explicacao" equation=" \approx {{ geratriz }}  \ u.c."> </ng-katex>
+              </p>
+              <ng-template #elseGeratriz>
+                Geratriz
+                <ng-katex class="explicacao" equation=" = {{ geratriz }}  \ u.c."> </ng-katex>
+              </ng-template>
+            </button>
+            <i class="fa fa-arrow-circle-down float-right mt-2 mr-4" data-toggle="collapse"
+              data-target="#collapseGeratriz"></i>
+          </h2>
+        </div>
+
+        <div id="collapseGeratriz" class="collapse" aria-labelledby="headingGeratriz" data-parent="#accordionExample">
+          <div class="card-body">
+            Note que temos um triângulo retângulo, aplicando o teorema de pitágoras temos:
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-3">
+                <!-- Panel -->
+                <div class="panel-group" id="accordion">
+                  <!-- Passo 1 -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsePasso1" class="">
+                          <p>
+                            <ng-katex class="explicacao"
+                              equation="\color{black}{g} \color{black}{^2} = \color{red}{h} \color{black}{^2 +} \color{blue}{r} \color{black}{^2}">
+                            </ng-katex>
+                            <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                              data-target="#collapsePasso1"></i>
+                          </p>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapsePasso1" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        Fórmula para o cálculo da geratriz.
+                        <ul>
+                          <li>
+                            <ng-katex equation="\color{limegreen}{ g }"></ng-katex> = geratriz
+                          </li>
+                          <li>
+                            <ng-katex equation="\color{red}{ h }"></ng-katex> = altura
+                          </li>
+                          <li>
+                            <ng-katex equation="\color{blue}{ r }"></ng-katex> = raio
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <!-- Passo 2 -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsePasso2" class="">
+                          <p>
+                            <ng-katex class="explicacao"
+                              equation="\color{black}{g} \color{black}{^2} = \color{red}{ {{ height * height }} } \color{black}{ + } \color{blue}{ {{ radius * radius }} }">
+                            </ng-katex>
+                            <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                              data-target="#collapsePasso2"></i>
+                          </p>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapsePasso2" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        Aplicando os valores na fórmula e elevando a altura (<ng-katex
+                          equation="\color{red}{ {{ height }} }"></ng-katex>) ao quadrado e o raio (<ng-katex
+                          equation="\color{blue}{ {{ radius }} }"></ng-katex>) ao quadrado.
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <!-- Passo 3 -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsePasso3" class="">
+                          <p>
+                            <ng-katex class="explicacao"
+                              equation="\color{black}{g} \textcolor{black}{ = \sqrt{ \textcolor{red}{ {{height * height}} }  + \textcolor{blue}{ {{ radius * radius }} } }} ">
+                            </ng-katex>
+                            <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                              data-target="#collapsePasso3"></i>
+                          </p>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapsePasso3" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        Passamos o expoente do g para o outro lado da igualdade tornando-se uma raíz quadrada dos
+                        valores
+                        <ng-katex equation="\color{red}{ {{ height * height }} }"></ng-katex> e
+                        <ng-katex equation="\color{blue}{ {{ radius * radius }} }"></ng-katex>.
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <!-- Passo 4 -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsePasso4" class="">
+                          <p>
+                            <ng-katex class="explicacao"
+                              equation="\color{black}{g} \textcolor{black}{ = \sqrt{ \textcolor{limegreen}{ {{ height * height + radius * radius }} } }}">
+                            </ng-katex>
+                            <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                              data-target="#collapsePaaso4"></i>
+                          </p>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapsePasso4" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        Calculando a soma <ng-katex equation="\color{red}{ {{ height * height }} }">
+                        </ng-katex> + <ng-katex equation="\color{blue}{ {{ radius * radius }} }"></ng-katex>, e
+                        calculando a sua raíz quadrada.
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <!-- Passo 5 -->
+                  <div *ngIf="outsideRoot != 1 && insideRoot != 1" class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsePasso5" class="">
+                          <p>
+                            <ng-katex class="explicacao"
+                              equation="\color{black}{g} \textcolor{black}{ = {{ outsideRoot }} \sqrt{ \textcolor{limegreen}{ {{ insideRoot }} } }}">
+                            </ng-katex>
+                            <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                              data-target="#collapsePasso5"></i>
+                          </p>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapsePasso5" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        Aplicando a fatoração da raíz.
+                      </div>
+                    </div>
+                  </div>
+                  <hr *ngIf="outsideRoot != 1 && insideRoot != 1">
+                  <!-- Passo 6 -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsePasso6" class="">
+                          <p *ngIf="isApprox; else elseBlockGeratriz">
+                            <ng-katex class="explicacao"
+                              equation="\textcolor{black}{ g } \textcolor{black}{ \approx \textcolor{black}{ {{ geratriz }} } \ u.c.}">
+                            </ng-katex>
+                            <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                              data-target="#collapsePasso6"></i>
+                          </p>
+                          <ng-template #elseBlockGeratriz>
+                            <ng-katex class="explicacao"
+                              equation="\textcolor{black}{ g } \textcolor{black}{ = \textcolor{black}{ {{ geratriz }} } \ u.c.}">
+                            </ng-katex>
+                            <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                              data-target="#collapsePaaso4"></i>
+                          </ng-template>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapsePasso6" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        Resultado final aproximado na forma decimal em unidades de comprimento.
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+                <!-- end panel -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end collapse geratriz -->
+
+      <!-- Exemplo -->
+      <div class="card">
+        <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+              aria-expanded="false" aria-controls="collapseTwo">
+              <p *ngIf="isApprox else elseResult" class="mb-0">
+                Cálculo da Área Lateral
+                <ng-katex class="explicacao" equation=" \approx {{ (radius * geratriz).toFixed(2) }}  \pi \ u.a.">
+                </ng-katex>
+              </p>
+              <ng-template #elseResult>
+                Cálculo da Área Lateral
+                <ng-katex class="explicacao" equation="= {{radius * geratriz }}  \pi \ u.a.">
+                </ng-katex>
+              </ng-template>
+            </button>
+
+            <i class="fa fa-arrow-circle-down float-right mt-2 mr-4" data-toggle="collapse"
+              data-target="#collapseTwo"></i>
+          </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <!-- Panel -->
+          <div class="card-body">
+            <!-- Passo 1  -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" class="">
+                    <p>
+                      <ng-katex class="explicacao"
+                        equation="\textcolor{black}{A_l = \pi \cdot \textcolor{blue}{r} \cdot \textcolor{limegreen}{ g } }">
+                      </ng-katex>
+                      <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                        data-target="#collapseSix"></i>
+                    </p>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseSix" class="panel-collapse collapse">
+                <div class="panel-body">
+                  Fórmula para calcular a área lateral.
+                  <ul>
+                    <li>
+                      <ng-katex equation="\color{blue}{ r }"></ng-katex> = raio
+                    </li>
+                    <li>
+                      <ng-katex equation="\color{limegreen}{ g }"></ng-katex> = geratriz
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <!-- Passo 2  -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" class="">
+                    <p>
+                      <ng-katex class="explicacao"
+                        equation="\textcolor{black}{A_l = \pi \cdot \textcolor{blue}{ {{radius}} } \cdot \textcolor{limegreen}{ {{outsideRoot != 1 ? outsideRoot : '' }} {{ insideRoot !=1 ? '\\sqrt{' + insideRoot + '}' : '' }} } }">
+                      </ng-katex>
+                      <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                        data-target="#collapseSeven"></i>
+                    </p>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseSeven" class="panel-collapse collapse">
+                <div class="panel-body">
+                  Multiplica o raio (<ng-katex equation="\textcolor{blue}{ {{radius}} }"></ng-katex>) pela geratriz
+                  fatorada.
+                </div>
+              </div>
+            </div>
+            <hr>
+            <!-- Passo 3  -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight" class="">
+                    <p>
+                      <ng-katex class="explicacao"
+                        equation="\textcolor{black}{A_l = \pi \cdot \textcolor{red}{  {{ radius * outsideRoot }} {{ insideRoot !=1 ? '\\sqrt{' + insideRoot + '}' : '' }} } }">
+                      </ng-katex>
+                      <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                        data-target="#collapseEight"></i>
+                    </p>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseEight" class="panel-collapse collapse">
+                <div class="panel-body">
+                  Multiplica <ng-katex equation="\pi"></ng-katex> pelo resultado do passo anterior.
+                </div>
+              </div>
+            </div>
+            <hr>
+            <!-- Passo 4 -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseNine" class="">
+                    <p *ngIf="isApprox; else elseBlock">
+                      <ng-katex class="explicacao"
+                        equation="\textcolor{black}{A_l \approx \textcolor{black}{ {{ (radius * geratriz).toFixed(2) }} } \pi \ u.a.}">
+                      </ng-katex>
+                      <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                        data-target="#collapseNine"></i>
+                    </p>
+                    <ng-template #elseBlock>
+                      <ng-katex class="explicacao"
+                        equation="\textcolor{black}{A_l = \textcolor{black}{ {{radius * geratriz }} } \pi \ u.a.}">
+                      </ng-katex>
+                      <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                        data-target="#collapsePaaso4"></i>
+                    </ng-template>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseNine" class="panel-collapse collapse">
+                <div class="panel-body">
+                  Resultado final aproximado na forma decimal em unidades de área.
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end panel  -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</geo-base-view>

@@ -1,0 +1,158 @@
+<geo-base-view>
+
+  <div class="btn-container row ">
+    <h3 class="col-12 text-center">Área da esfera</h3>
+  </div>
+  <!-- Botões de navegação -->
+  <div class="btn-container mt-2 row">
+    <h5 class="mt-2 col-12 text-center">Escolha abaixo a propriedade que deseja calcular referente a esfera</h5>
+    <geo-btn *ngFor="let button of buttons; let i = index" [name]="button.title" [route]="button.route"></geo-btn>
+  </div>
+
+
+
+  <!-- Conteúdo -->
+  <div class="btn-container mt-2 row">
+    <!-- Inputs -->
+    <p class="mt-4 col-12 text-center">Entre com a medida do raio(<ng-katex equation="\color{red}r"></ng-katex>):
+      <!-- Campos de entrada -->
+      <input class="btn btn-secondary bg-white text-body" type="number" [(ngModel)]="radius"
+        oninput="this.value = Math.abs(this.value)" (ngModelChange)="changeRadius()" max="50" min="5" />
+    </p>
+    <div [className]="errorInput === true ? 'mt-1 alert alert-danger mx-auto' : 'mt-1 alert alert-primary mx-auto'" role="alert">
+      O raio deve ser um valor inteiro contido entre <b>5</b> e <b>50</b>.
+    </div>
+    <!-- Cena -->
+    <geo-scene class="col-12 row px-0 img-fluid order-md-2 order-1" [hasOrbitControls]="true" [hasPerspective]="true">
+    </geo-scene>
+  </div>
+
+  <!-- Propriedades -->
+  <div class="rightbar px-3 vh-100">
+    <h3>Propriedades:</h3>
+    <p>
+      É a medida da superfície de uma esfera.
+    </p>
+    <p class="text-center">
+      <ng-katex class="explicacao" equation="A = 4 \cdot \pi \cdot \color{red}{r}\color{black}{^2}"></ng-katex>
+    </p>
+    <!-- Imagem -->
+    <div class="text-center">
+      <img class="img-fluid" src="assets/images/geometria/esfera/area-volume/area-esfera.svg">
+    </div>
+    <br />
+    <hr />
+
+    <!-- Accordion -->
+    <div class="accordion" id="accordionExample">
+
+      <!-- Exemplo -->
+      <div class="card">
+        <div class="card-header" id="heading" data-toggle="collapse" data-target="#collapse">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse"
+              aria-expanded="true" aria-controls="collapse">
+              Cálculo = <ng-katex class="explicacao" equation="{{ 4 * radius * radius }} \pi \ u.a.">
+              </ng-katex>
+            </button>
+            <!-- ícone -->
+            <i class="fa fa-arrow-circle-down float-right mt-2 mr-3" data-toggle="collapse" data-target="#collapse"></i>
+          </h2>
+        </div>
+
+        <div id="collapse" class="collapse" aria-labelledby="heading" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="row">
+              <div class="pl-0 pr-0 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="panel-group" id="accordion">
+
+                  <!-- Passo 1  -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#one" class="">
+                          <p>
+                            <ng-katex class="explicacao"
+                              equation="\color{black}{A = 4 \cdot \pi \cdot \color{red}{r}\color{black}{^2}}">
+                            </ng-katex>
+
+                            <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                              data-target="#collapseGeratriz"></i>
+                          </p>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="one" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        Fórmula para calcular a área da esfera.
+                        <ul>
+                          <li>
+                            <ng-katex equation="\color{red}{ r }"></ng-katex> = raio
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <!-- Passo 2  -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#two" class="">
+                          <p>
+                            <ng-katex class="explicacao"
+                              equation="\color{black}{A = 4 \cdot \pi \cdot \color{red}{ {{radius}} } \color{black}{ ^2 }}">
+                            </ng-katex>
+
+                            <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                              data-target="#collapseGeratriz"></i>
+                          </p>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="two" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        Substitui os valores na fórmulas, eleva o raio(<ng-katex
+                          equation="\textcolor{red}{ {{radius}} }">
+                        </ng-katex>) ao quadrado e multiplica por 4.
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <!-- Passo 3  -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#three" class="">
+                          <p>
+                            <ng-katex class="explicacao"
+                              equation="\color{black}{A = {{ 4 * (radius*radius)}}  \color{black}{ \pi \ u.a. }}">
+                            </ng-katex>
+
+                            <i class="fa fa-arrow-circle-down float-right mt-2" data-toggle="collapse"
+                              data-target="#collapseGeratriz"></i>
+                          </p>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="three" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        Resultado final em unidades de área(u.a).
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End exemplo -->
+
+    </div>
+    <!-- end accordion -->
+
+  </div>
+
+</geo-base-view>

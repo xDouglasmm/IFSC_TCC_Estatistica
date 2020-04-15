@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="col-sm-12 col-md-12 botoes">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <button class="btn btn-block btn-outline-primary botao" (click)="onSetRetasParalelas()">Retas Paralelas <i
+            class="fa fa-caret-down" aria-hidden="true"></i></button>
+      </div>
+
+      <div class="col-sm-12 col-md-6">
+        <button class="btn btn-block btn-outline-primary botao" (click)="onSetRetasConcorrentes()">Retas Concorrentes
+          <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-12 retas" [ngSwitch]="formModel.get('retas').value">
+    <div *ngSwitchCase="'um'">
+      <h5>
+        <app-retas-paralelas></app-retas-paralelas>
+      </h5>
+    </div>
+    <div *ngSwitchCase="'dois'">
+      <h5>
+        <app-retas-concorrentes></app-retas-concorrentes>
+      </h5>
+    </div>
+  </div>
+</div>

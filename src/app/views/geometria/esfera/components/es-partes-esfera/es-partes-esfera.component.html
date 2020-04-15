@@ -1,0 +1,35 @@
+<section class="info">
+
+  <div class="row mt-2">
+    <h3 class="col-12 text-center">Partes de uma esfera</h3>
+    <!-- Botões de navegação -->
+    <div class="col-12 btn-container mt-2 row">
+      <h5 class="mt-2 col-12 text-center">Escolha abaixo a propriedade que deseja calcular referente a esfera</h5>
+      <div class="row col-12">
+        <geo-btn class="mx-auto" *ngFor="let button of buttons; let i = index" [name]="button.title"
+          [route]="button.route"></geo-btn>
+      </div>
+    </div>
+
+    <!-- Breve explicação -->
+    <div class="content-container col-12 row px-0 d-flex align-items-center justify-content-center">
+      <div class="row col-12 mt-5">
+
+        <div class="col-lg-4 col-12 text-center">
+          <h5 class="text-center">Cunha esférica</h5>
+          <img class="img-fluid" src="assets/images/geometria/esfera/cunha-esferica.png">
+        </div>
+        <div class="col-lg-4 col-12 text-center">
+          <h5 class="text-center mb-0">Fuso esférico</h5>
+          <img class="img-fluid" src="assets/images/geometria/esfera/fuso-esfera.png">
+        </div>
+        <div class="col-lg-4 col-12 text-center">
+          <h5 class="text-center">Calota</h5>
+          <img class="img-fluid" src="assets/images/geometria/esfera/calota-esfera.png">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>

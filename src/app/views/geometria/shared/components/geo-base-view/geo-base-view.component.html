@@ -1,0 +1,23 @@
+<section class="ifmath-view">
+
+  <div class="row mt-2">
+    
+    <!-- Botões e conteúdo -->
+    <div class="col-lg-7 col-12">
+      <!-- Botões -->
+      <div class="row justify-content-around">
+        <ng-content select=".btn-container"></ng-content>
+      </div>
+       <!-- Conteúdo abaixo dos botões -->
+      <div class="row justify-content-center">
+        <ng-content select=".content-container"></ng-content>
+      </div>
+    </div>
+
+    <!-- Propriedades -->
+    <div class="col-lg-5 col-12">
+      <ng-content select=".rightbar"></ng-content>
+    </div>
+  </div>
+
+</section>

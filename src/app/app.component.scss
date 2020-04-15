@@ -1,0 +1,19 @@
+$height: 100%;
+$weight: 100%;
+
+ifmath-app {
+    display: flex;
+    width: $weight;
+    height: $height;
+
+
+  .app {
+    width: $weight;
+    height: $height;
+    font-size: 24px;
+    box-shadow: 0 10px 100px rgba(0, 0, 0, 0.8), 0 40px 20px -20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    overflow: hidden;
+  }
+
+}

@@ -1,0 +1,37 @@
+.results {
+  margin-top: 5px;
+  background-color: white;
+  overflow: auto;
+
+  li {
+    list-style-type: none;
+  }
+
+  &__item {
+    margin-bottom: 5px;
+    list-style-type: none;
+    border: solid 1px rgb(209, 208, 208);
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+
+
+    &__text {
+      text-align: justify;
+    }
+
+    &__icon {
+      float: right;
+      font-size: 24px;
+
+      &__fa__down {
+        color: rgb(153, 245, 16);
+      }
+
+      &__fa__up {
+        color: red;
+      }
+    }
+  }
+
+}
